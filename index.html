@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>徐德贵 | 天蝎泪 — 个人简介</title>
+<style>
+:root {
+  --bg: #0d1117;
+  --bg-card: #161b22;
+  --bg-card-hover: #1c2333;
+  --border: #30363d;
+  --text: #c9d1d9;
+  --text-muted: #8b949e;
+  --accent: #f78166;
+  --accent2: #58a6ff;
+  --accent3: #3fb950;
+  --radius: 12px;
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --nav-height: 64px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: var(--nav-height); }
+
+body {
+  font-family: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ---------- Navbar ---------- */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: var(--nav-height);
+  background: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-links {
+  display: flex; gap: 2rem; list-style: none;
+}
+.nav-links a {
+  color: var(--text-muted); text-decoration: none;
+  font-size: 0.95rem; font-weight: 500;
+  transition: color var(--transition); position: relative;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--accent); }
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+  background: var(--accent); transition: width var(--transition);
+}
+.nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+
+/* ---------- Shared ---------- */
+.section {
+  padding: 100px 24px; max-width: 960px; margin: 0 auto;
+}
+.section-title {
+  font-size: 2rem; font-weight: 800; color: #e6edf3;
+  margin-bottom: 1rem; letter-spacing: -0.02em;
+}
+.section-subtitle {
+  color: var(--text-muted); font-size: 1.05rem;
+  margin-bottom: 3rem;
+}
+.accent-dot { color: var(--accent); }
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 100vh; display: flex; align-items: center; justify-content: center;
+  padding: 24px; position: relative; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; pointer-events: none;
+}
+.hero-bg::before {
+  content: ''; position: absolute; top: -300px; right: -300px;
+  width: 800px; height: 800px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(247,129,102,0.12) 0%, transparent 70%);
+}
+.hero-bg::after {
+  content: ''; position: absolute; bottom: -200px; left: -200px;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(88,166,255,0.08) 0%, transparent 70%);
+}
+.hero-inner {
+  position: relative; text-align: center; z-index: 1;
+}
+.hero-badge {
+  display: inline-block; padding: 6px 18px;
+  background: rgba(247,129,102,0.12); border: 1px solid rgba(247,129,102,0.3);
+  border-radius: 100px; color: var(--accent);
+  font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+.hero-name {
+  font-size: 4rem; font-weight: 900; color: #e6edf3;
+  line-height: 1.15; margin-bottom: 0.5rem;
+}
+.hero-nickname {
+  font-size: 1.4rem; color: var(--accent); font-weight: 700;
+  margin-bottom: 1rem;
+}
+.hero-role {
+  font-size: 1.25rem; color: var(--text-muted); margin-bottom: 0.75rem;
+}
+.hero-location {
+  font-size: 0.95rem; color: var(--text-muted);
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+.hero-location svg { width: 16px; height: 16px; fill: var(--accent); }
+.hero-scroll {
+  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  animation: bounce 2s infinite;
+}
+.hero-scroll svg { width: 28px; height: 28px; fill: var(--text-muted); }
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
+}
+
+/* ---------- About ---------- */
+#about { background: var(--bg); }
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;
+}
+.about-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 2rem;
+  transition: all var(--transition);
+}
+.about-card:hover { background: var(--bg-card-hover); border-color: var(--accent); }
+.about-card h3 {
+  color: var(--accent2); font-size: 1.1rem; margin-bottom: 1rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.about-card p { color: var(--text); font-size: 0.95rem; }
+.about-card .highlight { color: var(--accent); font-weight: 600; }
+
+/* ---------- Skills ---------- */
+#skills { background: #0b1016; }
+.skills-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem;
+}
+.skill-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.5rem;
+  text-align: center; transition: all var(--transition);
+}
+.skill-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+.skill-icon {
+  font-size: 2rem; margin-bottom: 0.75rem;
+}
+.skill-name { font-weight: 700; color: #e6edf3; margin-bottom: 0.25rem; }
+.skill-level { font-size: 0.82rem; color: var(--text-muted); }
+
+/* ---------- Projects ---------- */
+#projects { background: var(--bg); }
+.projects-list { display: flex; flex-direction: column; gap: 1.5rem; }
+.project-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 2rem;
+  transition: all var(--transition);
+  border-left: 4px solid transparent;
+}
+.project-card:hover { border-left-color: var(--accent); background: var(--bg-card-hover); }
+.project-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.75rem; }
+.project-icon {
+  width: 48px; height: 48px; border-radius: var(--radius);
+  background: rgba(247,129,102,0.12);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+}
+.project-name { font-size: 1.2rem; font-weight: 700; color: #e6edf3; }
+.project-tech {
+  margin-top: 0.25rem; font-size: 0.82rem; color: var(--accent2);
+}
+.project-desc { color: var(--text); font-size: 0.95rem; line-height: 1.7; }
+.project-tags {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem;
+}
+.tag {
+  padding: 4px 12px; font-size: 0.78rem; border-radius: 100px;
+  background: rgba(88,166,255,0.1); color: var(--accent2);
+  border: 1px solid rgba(88,166,255,0.2);
+}
+.tag.green { background: rgba(63,185,80,0.1); color: var(--accent3); border-color: rgba(63,185,80,0.2); }
+
+/* ---------- Experience ---------- */
+#experience { background: #0b1016; }
+.timeline {
+  position: relative; padding-left: 32px;
+}
+.timeline::before {
+  content: ''; position: absolute; left: 11px; top: 4px; bottom: 4px;
+  width: 2px; background: var(--border);
+}
+.timeline-item {
+  position: relative; margin-bottom: 2rem;
+}
+.timeline-item:last-child { margin-bottom: 0; }
+.timeline-dot {
+  position: absolute; left: -32px; top: 4px;
+  width: 24px; height: 24px; border-radius: 50%;
+  background: var(--accent); border: 4px solid var(--bg);
+  z-index: 1;
+}
+.timeline-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.5rem 2rem;
+  transition: all var(--transition);
+}
+.timeline-card:hover { border-color: var(--accent); background: var(--bg-card-hover); }
+.timeline-period {
+  font-size: 0.82rem; color: var(--accent); font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: flex; align-items: center; gap: 8px;
+}
+.timeline-role { font-size: 1.15rem; font-weight: 700; color: #e6edf3; margin-bottom: 0.25rem; }
+.timeline-company { font-size: 0.92rem; color: var(--text-muted); }
+.timeline-desc { margin-top: 0.75rem; color: var(--text); font-size: 0.92rem; }
+.timeline-desc ul { padding-left: 1.2rem; }
+.timeline-desc li { margin-bottom: 0.35rem; }
+
+/* ---------- Contact ---------- */
+#contact { background: var(--bg); text-align: center; }
+.contact-cards {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem; margin-bottom: 3rem;
+}
+.contact-card {
+  background: var(--bg-card); border: 1px solid var(--border);
+  border-radius: var(--radius); padding: 1.5rem;
+  transition: all var(--transition);
+  text-decoration: none; color: var(--text);
+}
+.contact-card:hover { border-color: var(--accent2); transform: translateY(-3px); }
+.contact-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+.contact-label { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.25rem; }
+.contact-value { font-size: 1rem; font-weight: 600; color: #e6edf3; }
+
+/* Footer */
+.footer {
+  text-align: center; padding: 3rem 24px;
+  color: var(--text-muted); font-size: 0.82rem;
+  border-top: 1px solid var(--border);
+}
+.footer .accent { color: var(--accent); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .hero-name { font-size: 2.5rem; }
+  .about-grid { grid-template-columns: 1fr; }
+  .section { padding: 60px 16px; }
+  .nav-links { gap: 1.2rem; }
+  .nav-links a { font-size: 0.82rem; }
+  .section-title { font-size: 1.5rem; }
+  .contact-cards { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 480px) {
+  .contact-cards { grid-template-columns: 1fr; }
+  .skills-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<nav class="navbar">
+  <ul class="nav-links">
+    <li><a href="#home" class="active">首页</a></li>
+    <li><a href="#about">关于</a></li>
+    <li><a href="#skills">技能</a></li>
+    <li><a href="#projects">项目</a></li>
+    <li><a href="#experience">经历</a></li>
+    <li><a href="#contact">联系</a></li>
+  </ul>
+</nav>
+
+<!-- ========== HERO ========== -->
+<section id="home" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">SCORPIO · SOFTWARE TEST ENGINEER</div>
+    <h1 class="hero-name">徐德贵</h1>
+    <div class="hero-nickname">天蝎泪 <span style="font-size:1.8rem;">🦂</span></div>
+    <p class="hero-role">软件测试工程师 — 用代码说话，用数据决策</p>
+    <p class="hero-location">
+      <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      深圳 · 纵腾集团
+    </p>
+  </div>
+  <div class="hero-scroll">
+    <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+  </div>
+</section>
+
+<!-- ========== ABOUT ========== -->
+<section id="about" class="section">
+  <h2 class="section-title"><span class="accent-dot">#</span> 关于我</h2>
+  <p class="section-subtitle">一个用直觉写用例、用数据挖缺陷的工程精魂。</p>
+
+  <div class="about-grid">
+    <div class="about-card">
+      <h3>🧭 定位</h3>
+      <p>
+        软件测试工程师，工号 <span class="highlight">zt22650</span>，base 深圳纵腾集团。
+        手握 <span class="highlight">Python</span> 技术栈，专注 <span class="highlight">接口自动化测试</span>，
+        致力于将 AI 能力落地到测试流程中——从需求分析到用例设计，从脚本执行到缺陷追踪。
+      </p>
+    </div>
+    <div class="about-card">
+      <h3>🎯 信条</h3>
+      <p>
+        代码能说明白的事不用 PPT。<br>
+        数据是母语，直觉是刃。<br>
+        不跪舔，不废话，句句落在刀刃上。<br>
+        <span style="color:var(--accent);font-weight:600;">—— 锐利、务实、数据驱动。</span>
+      </p>
+    </div>
+    <div class="about-card">
+      <h3>⚡ AI 落地</h3>
+      <p>
+        主线：<span class="highlight">接口自动化测试</span>。<br>
+        从需求分析 → 测试矩阵 → 自动化脚本 → 缺陷分析的全链路 AI 辅助。<br>
+        关注 Scout 测试自动化平台（Electron 架构）的持续演进。
+      </p>
+    </div>
+    <div class="about-card">
+      <h3>🛠 日常工作流</h3>
+      <p>
+        飞书协同 · DBeaver 数据探查 · 飞书 CLI 自动化。<br>
+        Python 脚本驱动的测试交付，结构化的输出节奏——<br>
+        <span class="highlight">指令 → 脚本 → 文档 → 验证</span>，每一步都可追溯。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ========== SKILLS ========== -->
+<section id="skills" class="section">
+  <h2 class="section-title"><span class="accent-dot">#</span> 技能栈</h2>
+  <p class="section-subtitle">这些年攒下的武器，每一个都在生产环境磨过刀。</p>
+
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">🐍</div>
+      <div class="skill-name">Python</div>
+      <div class="skill-level">主力语言 · 精通</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🧪</div>
+      <div class="skill-name">接口自动化测试</div>
+      <div class="skill-level">核心方向 · 精通</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚡</div>
+      <div class="skill-name">Electron</div>
+      <div class="skill-level">Scout 平台 · 熟练</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🗄</div>
+      <div class="skill-name">SQL / DBeaver</div>
+      <div class="skill-level">数据探查 · 熟练</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🔗</div>
+      <div class="skill-name">API 测试</div>
+      <div class="skill-level">RESTful / 契约 · 熟练</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🦅</div>
+      <div class="skill-name">飞书集成</div>
+      <div class="skill-level">CLI / API / 自动化 · 熟练</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <div class="skill-name">测试用例设计</div>
+      <div class="skill-level">等价类 / 边界值 / 场景法 · 精通</div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <div class="skill-name">AI 工程化</div>
+      <div class="skill-level">提示工程 / Agent 编排 · 掌握</div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== PROJECTS ========== -->
+<section id="projects" class="section">
+  <h2 class="section-title"><span class="accent-dot">#</span> 项目经历</h2>
+  <p class="section-subtitle">经手的项目不多，但每个都扎得深。</p>
+
+  <div class="projects-list">
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🔬</div>
+        <div>
+          <div class="project-name">Scout 测试自动化平台</div>
+          <div class="project-tech">Electron · Python · AI 增强</div>
+        </div>
+      </div>
+      <p class="project-desc">
+        基于 Electron 架构的企业级测试自动化平台。负责平台的功能测试、接口测试
+        以及 AI 能力集成——从测试用例智能生成到执行结果归因分析，
+        构建端到端的自动化测试流水线。
+      </p>
+      <div class="project-tags">
+        <span class="tag">Electron</span>
+        <span class="tag">Python</span>
+        <span class="tag">自动化测试</span>
+        <span class="tag green">AI 集成</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">📋</div>
+        <div>
+          <div class="project-name">OEHR / GHR 绩效管理</div>
+          <div class="project-tech">Web · Python · 数据处理</div>
+        </div>
+      </div>
+      <p class="project-desc">
+        绩效管理系统全链路测试，涵盖绩效目标设定、评估流程、数据报表等核心模块。
+        通过 Python 脚本驱动接口自动化回归，保障每次迭代的交付质量。
+      </p>
+      <div class="project-tags">
+        <span class="tag">Web 测试</span>
+        <span class="tag">Python</span>
+        <span class="tag green">回归测试</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <div class="project-icon">🔗</div>
+        <div>
+          <div class="project-name">HRAS 数字化技术团队对接</div>
+          <div class="project-tech">API 集成 · 系统对接 · 测试</div>
+        </div>
+      </div>
+      <p class="project-desc">
+        与数字化技术团队的跨系统对接项目，负责接口契约验证、数据一致性校验
+        以及端到端集成测试，确保 HR 领域多系统间的数据流转准确无误。
+      </p>
+      <div class="project-tags">
+        <span class="tag">API 测试</span>
+        <span class="tag">集成测试</span>
+        <span class="tag green">数据校验</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== EXPERIENCE ========== -->
+<section id="experience" class="section">
+  <h2 class="section-title"><span class="accent-dot">#</span> 工作经历</h2>
+  <p class="section-subtitle">每一步都算数。</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-card">
+        <div class="timeline-period">现在</div>
+        <div class="timeline-role">软件测试工程师</div>
+        <div class="timeline-company">纵腾集团 · 深圳</div>
+        <div class="timeline-desc">
+          <ul>
+            <li>主导 Scout 测试自动化平台（Electron）的质量保障与 AI 能力落地</li>
+            <li>搭建 Python 接口自动化测试框架，支撑多条业务线回归测试</li>
+            <li>探索 AI 辅助测试——需求分析 → 用例生成 → 缺陷归因的全链路自动化</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-dot" style="background:var(--accent2);"></div>
+      <div class="timeline-card">
+        <div class="timeline-period">成长之路</div>
+        <div class="timeline-role">测试工程师</div>
+        <div class="timeline-company">Python 技术栈深耕 · 接口测试 · 自动化</div>
+        <div class="timeline-desc">
+          <ul>
+            <li>构建 Python 驱动的自动化测试脚本体系</li>
+            <li>负责 OEHR / GHR 绩效管理系统等核心项目的质量保障</li>
+            <li>积累从手工测试到自动化测试的转型经验</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CONTACT ========== -->
+<section id="contact" class="section">
+  <h2 class="section-title"><span class="accent-dot">#</span> 联系我</h2>
+  <p class="section-subtitle">有事说事，直接来。</p>
+
+  <div class="contact-cards">
+    <div class="contact-card">
+      <div class="contact-icon">🆔</div>
+      <div class="contact-label">工号</div>
+      <div class="contact-value">zt22650</div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">🟢</div>
+      <div class="contact-label">协作平台</div>
+      <div class="contact-value">飞书 ztn.feishu.cn</div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">📍</div>
+      <div class="contact-label">坐标</div>
+      <div class="contact-value">深圳</div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon">🦂</div>
+      <div class="contact-label">代号</div>
+      <div class="contact-value">天蝎泪</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>Built with <span class="accent">precision</span> · 天蝎泪 🦂 · 2026</p>
+  <p style="margin-top:4px;">锐利、务实、数据驱动 — 代码能说明白的事不用 PPT。</p>
+</footer>
+
+<!-- ========== SCRIPTS ========== -->
+<script>
+// Navbar active state on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    const top = s.offsetTop - 100;
+    if (scrollY >= top) current = s.getAttribute('id');
+  });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+});
+
+// Fade-in animation on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.section, .about-card, .skill-card, .project-card, .timeline-card, .contact-card')
+  .forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
